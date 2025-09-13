@@ -1,22 +1,26 @@
-const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const app = require('./app');
 
-dotenv.config();
-
 const PORT = process.env.PORT || 5000;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => {
+if (!MONGODB_URI) {
+  console.error('MONGODB_URI not set. Check backend/.env');
+  process.exit(1);
+}
+
+const masked = MONGODB_URI.replace(/:\/\/(.*)@/, '://***:***@');
+console.log('Using MONGODB_URI:', masked);
+
+mongoose.connect(MONGODB_URI)
+  .then(() => {
     console.log('MongoDB connected');
     app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
+      console.log(`Server is running on http://localhost:${PORT}`);
     });
-})
-.catch(err => {
+  })
+  .catch(err => {
     console.error('MongoDB connection error:', err);
-});
+    process.exit(1);
+  });

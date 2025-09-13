@@ -9,14 +9,17 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+          </Switch>
+        </div>
       </Router>
     </AuthProvider>
   );
 }
+
 
 export default App;

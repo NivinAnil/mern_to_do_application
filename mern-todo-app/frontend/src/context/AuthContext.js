@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
   const api = axios.create({
-    baseURL: "/api",
+    baseURL: process.env.REACT_APP_BACKEND_BASEURL+"/api" || "http://localhost:5000/api",
   });
 
   api.interceptors.request.use((config) => {

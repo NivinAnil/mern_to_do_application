@@ -10,7 +10,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);

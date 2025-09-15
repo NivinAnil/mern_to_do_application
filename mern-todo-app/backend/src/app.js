@@ -20,7 +20,6 @@ app.all('/', function(req, res, next) {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
-app.use('/api/health', (req, res) => res.json({ status: 'OK' }));
-
+app.use('/api/health', (req, res) => res.json({ status: 'OK',mongoUrl: process.env.MONGODB_URI }));
 
 module.exports = app;

@@ -9,11 +9,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"
   },
-  "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "build": "cd frontend && npm ci && npm run build"
-  },
+"scripts": {
+  "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+
   "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [

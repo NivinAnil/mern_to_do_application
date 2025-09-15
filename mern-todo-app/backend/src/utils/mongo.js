@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+require("dotenv").config();
 const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI environment variable is required');
@@ -24,7 +24,10 @@ async function connectToDatabase() {
     };
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((m) => {
       return m;
+    }).catch(error => {
+      console.log("Error connecting to database",error.message)
     });
+    
   }
   cached.conn = await cached.promise;
   return cached.conn;

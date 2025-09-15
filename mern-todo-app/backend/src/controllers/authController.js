@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
     const userSafe = { _id: newUser._id, username: newUser.username, email: newUser.email };
     return res.status(201).json({ user: userSafe });
   } catch (error) {
-    return res.status(500).json({ message: 'Error registering user' });
+    return res.status(500).json({ message: 'Error registering user' ,error:error});
   }
 };
 

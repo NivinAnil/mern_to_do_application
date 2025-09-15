@@ -1,5 +1,5 @@
-const app = require('../src/app');             
-const { connectToDatabase } = require('../src/utils/mongo'); 
+const app = require('../app');             
+const { connectToDatabase } = require('../utils/mongo'); 
 
 module.exports = async (req, res) => {
   try {

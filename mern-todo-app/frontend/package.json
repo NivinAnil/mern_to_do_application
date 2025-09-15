@@ -10,10 +10,9 @@
     "react-scripts": "^4.0.3"
   },
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "cd frontend && npm ci && npm run build"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
